@@ -4195,9 +4195,6 @@
 
         function handleSearchInput() {
             const query = document.getElementById('searchInput').value.trim();
-            if (query && !lastSearchQuery) {
-                pushViewState();
-            }
             lastSearchQuery = query;
             performSearch();
         }
