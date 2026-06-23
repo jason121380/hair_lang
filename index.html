@@ -4020,7 +4020,8 @@
         }
 
         function encodeSpeechData(row) {
-            return encodeURIComponent(JSON.stringify(row));
+            // encodeURIComponent 不會編碼單引號，會破壞 onclick 內的字串（如 "Men's"），故額外處理
+            return encodeURIComponent(JSON.stringify(row)).replace(/'/g, "%27");
         }
 
         async function speakTextFromEncoded(encodedRow, lang = selectedLanguage) {
